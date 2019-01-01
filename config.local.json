@@ -1,0 +1,24 @@
+{
+	"docker":
+	{
+		"composeFilePath": "./docker/soava-dia-development/docker-compose.yml"
+	},
+	"server":
+	{
+		"queryPaths": ["/queries", "/queries/security"],
+		"commandPaths": ["/commands", "/commands/security"],
+		"privateKey": "6df25adcfdc8cce62432f88b21bcd878",
+		"defaultPort": 3000
+	},
+	"couchbase": {
+		"sync": {
+			"path": "http://localhost:4984/",
+			"root": "localhost",
+			"port": 4984
+		},
+		"defaultBucket": "soava-dia",
+		"username": "test",
+		"password": "test1234",
+		"serverUrl": "couchbase://localhost"
+	}
+}
