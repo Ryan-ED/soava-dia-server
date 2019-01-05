@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "7e01d92c-5fa2-42ec-aa5f-9babd764e654",
+		"name": "Soava Dia Backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "361d5d61-ed4b-489a-b2c9-e55357f68f5a",
+								"exec": [
+									"",
+									"pm.test(\"saveToken\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"soavaDiaToken\", jsonData.jwtToken);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"matthew3@sobantu.co.za\",\n  \"tokenType\": \"password\",\n  \"token\": \"test\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\t\"email\": \"matthew3@sobantu.co.za\",\n\t\"tokenType\": \"password\",\n\t\"token\": \"test\"\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{soavaDiaToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9ec54621-579e-4449-a9b0-ac7fabe19bf3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8121c859-b659-497d-ae46-d79193a58132",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
