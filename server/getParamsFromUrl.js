@@ -12,6 +12,7 @@ module.exports = function(url, route)
   !splitRoute.some(x => potentialParameters.includes(x)))
   {
     hasNamedParameters = true;
+    results = {};
   }
 
   if(route.includes("{") && route.includes("}"))
@@ -21,6 +22,8 @@ module.exports = function(url, route)
 
     for (let i = 0; i < splitUrl.length; ++i)
     {
+      let length = results.length || Object.keys(results).length;
+
       if(splitRoute[i] === undefined ||
         (splitRoute[i].startsWith("{") && splitRoute[i].endsWith("}")))
       {
@@ -35,11 +38,10 @@ module.exports = function(url, route)
             results.push(splitUrl[i]);
           }
         }
-        else if(results.length < parameterCount)
+        else if(length < parameterCount)
         {
           if(hasNamedParameters)
           {
-
             results[splitRoute[i].replace("{", "").replace("}", "")] = splitUrl[i];
           }
           else
@@ -48,11 +50,12 @@ module.exports = function(url, route)
           }
         }
       }
-      else if(splitUrl[i] === splitRoute[i])
+
+      if(splitUrl[i] === splitRoute[i])
       {
         continue;
       }
     }
 
   return results;
-}
+};

@@ -26,6 +26,11 @@ class CouchbaseBucket
     {
       query = this.N1qlQuery.fromString(query);
     }
+
+    if(!Array.isArray(parameters))
+    {
+      parameters = Object.assign({}, parameters);
+    }
     
     return this.bucketQuery(query, parameters);
   }

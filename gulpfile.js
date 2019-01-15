@@ -1,11 +1,10 @@
 const gulp = require("gulp");
 const execa = require("execa");
 const childProcess = require("child_process");
-const configFilePath = "./config.local.json";
-const config = require(configFilePath);
+const config = require("./config.local.json");
 
 const paths = {
-  scripts: ["*.js", "**/*.js"],
+  scripts: ["*.js", "**/*.js", "**/*.sql"],
 };
 
 gulp.task("docker-up", function()

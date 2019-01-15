@@ -1,6 +1,8 @@
 module.exports = function(url, route)
 {
-  const splitUrl = url.split("/");
+  const splitUrl = url.split("/")
+        .map(x => x.includes("?") ? x.substring(0, x.indexOf("?")) : x);
+        
   const splitRoute = route.split("/");
   let result = false;
 

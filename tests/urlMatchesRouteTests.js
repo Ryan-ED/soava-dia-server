@@ -31,6 +31,15 @@ describe("urlMatchesRoute", function()
     expect(result).to.equal(true);
   });
 
+  it("will match two routes together with route params", function()
+  {
+    const url = "/localExpert/reviews?latest=true&expert=matthew";
+    const route = "/localExpert/reviews";
+    const result = urlMatchesRoute(url, route);
+
+    expect(result).to.equal(true);
+  });
+
   it("will match two routes together with many many params", function()
   {
     const url = "/localExpert/reviews/latest/expert/matthew/place/durban/all";
@@ -44,6 +53,15 @@ describe("urlMatchesRoute", function()
   {
     const url = "/localExpert/reviews/all";
     const route = "/localExpert";
+    const result = urlMatchesRoute(url, route);
+
+    expect(result).to.equal(true);
+  });
+
+  it("will compare url with no params", function()
+  {
+    const url = "/localExpert/reviews";
+    const route = "/localExpert/reviews";
     const result = urlMatchesRoute(url, route);
 
     expect(result).to.equal(true);

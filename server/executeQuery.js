@@ -33,7 +33,7 @@ module.exports = async function(req, query, bucket)
   }
   else
   {
-    if(params.length > 0)
+    if(params && !("length" in params))
     {
       results = await bucket.query(query, params);
     }
