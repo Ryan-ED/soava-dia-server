@@ -1,3 +1,5 @@
+/* publicQuery */
+
 SELECT
     vehicle,
     vehicleModel,

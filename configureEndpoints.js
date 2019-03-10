@@ -1,47 +1,23 @@
 const fs = require("fs");
-const couchbase = require("couchbase");
-
-const CouchbaseConnection = require("./database/CouchbaseConnection");
-const CouchQueryCache = require("./database/CouchQueryCache");
-const CouchCommandCache = require("./database/CouchCommandCache");
-
-
-const urlMatchesRoute = require("./server/urlMatchesRoute");
-const executeQuery = require("./server/executeQuery");
-const executeCommand = require("./server/executeCommand");
+const { N1qlQuery, Cluster } = require("couchbase");
+const { QueryCache, CommandCache } = require("monkey-bars-db");
+const { CouchbaseConnection, MangoParser, N1qlParser } = require("monkey-bars-db-couchbase");
+const { configureEndpoints } = require("monkey-bars-server");
 
 module.exports = function(config)
 {
-  const queryPaths = config.server.queryPaths.map(path => `${__dirname}${path}`);
-  const commandPaths = config.server.commandPaths.map(path => `${__dirname}${path}`);
+  const parsers = [new MangoParser(N1qlQuery), new N1qlParser(N1qlQuery)];
 
-  const queryCache = new CouchQueryCache(fs, queryPaths, couchbase.N1qlQuery);
-  const commandCache = new CouchCommandCache(fs, commandPaths);
+  const queryPaths = config.server.queryPaths.map(path => `${config.dirname}${path}`);
+  const commandPaths = config.server.commandPaths.map(path => `${config.dirname}${path}`);
 
+  const queryCache = new QueryCache(fs, queryPaths, parsers);
+  const commandCache = new CommandCache(fs, commandPaths);
+
+  // setting the modules for couchbase to use
+  config.couchbase.modules = { N1qlQuery: N1qlQuery, Cluster: Cluster };
   const connection = CouchbaseConnection.createConnection(config.couchbase);
   const bucket = connection.openBucket(config.couchbase.defaultBucket);
 
-  const endpoints = [];
-
-  const commands = commandCache.cacheAllCommands();
-  const queries = queryCache.cacheAllQueries();
-
-  for (const query of queries)
-  {
-      endpoints.push([(req) =>
-      urlMatchesRoute(req.url, query.route),
-      (req) => executeQuery(req, query, bucket)
-    , query.isPublicQuery]);
-  }
-
-  for (const command of commands)
-  {
-      endpoints.push([(req) =>
-        command.methods.includes(req.method) &&
-      urlMatchesRoute(req.url, command.route), (request) =>
-        executeCommand(request, command, bucket, config, queryCache)
-    ,command.isPublicCommand]);
-  }
-
-  return endpoints;
+  return configureEndpoints(config, queryCache, commandCache, bucket);
 };

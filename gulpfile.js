@@ -18,7 +18,7 @@ gulp.task("docker-down", function()
 });
 
 
-gulp.task("serve", function()
+gulp.task("serve", ["docker-up"], function()
 {
   let server = childProcess.fork("webServer.js");
 
