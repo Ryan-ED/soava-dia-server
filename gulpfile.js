@@ -9,6 +9,7 @@ const paths = {
 
 gulp.task("docker-pull", async function()
 {
+  console.log("docker", ...["pull" , "couchbase/server:community"]);
   await execa("docker", ["pull" , "couchbase/server:community"]).then(output =>
   {
     if (output.stdout)
@@ -25,11 +26,13 @@ gulp.task("docker-pull", async function()
 
 gulp.task("docker-up", function()
 {
+  console.log("docker-compose", ...[`--file=${config.docker.composeFilePath}`, "up", "-d"]);
   return execa("docker-compose", [`--file=${config.docker.composeFilePath}`, "up", "-d"]);
 });
 
 gulp.task("docker-down", function()
 {
+  console.log("docker-compose", ...[`--file=${config.docker.composeFilePath}`, "down"]);
   return execa("docker-compose", [`--file=${config.docker.composeFilePath}`, "down"]);
 });
 
