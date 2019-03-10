@@ -7,8 +7,8 @@
     "couchbase": "^2.6.3",
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.20.1",
-    "monkey-bars-db-couchbase": "0.0.1",
-    "monkey-bars-server": "0.0.1"
+    "monkey-bars-db-couchbase": "^0.0.2",
+    "monkey-bars-server": "^0.0.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",

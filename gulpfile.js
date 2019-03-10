@@ -7,6 +7,22 @@ const paths = {
   scripts: ["*.js", "**/*.js", "**/*.sql"],
 };
 
+gulp.task("docker-pull", async function()
+{
+  await execa("docker", ["pull" , "couchbase/server:community"]).then(output =>
+  {
+    if (output.stdout)
+    {
+      console.info(output.stdout);
+    }
+
+    if (output.stderr)
+    {
+      console.error(output.stderr);
+    }
+  });
+});
+
 gulp.task("docker-up", function()
 {
   return execa("docker-compose", [`--file=${config.docker.composeFilePath}`, "up", "-d"]);
