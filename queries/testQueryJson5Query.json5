@@ -1,0 +1,10 @@
+/* publicQuery */
+/* route:/test/json5/route */
+{
+  bucketName: "zytso",
+  selector: {
+    name: {$gte: null},
+    age: 20
+  },
+  sort: ['name']
+}
