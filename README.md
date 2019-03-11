@@ -69,7 +69,7 @@ These are:
 * singleResult
 	* Because N1QL queries always return arrays. Thus, this parameter will lead to a single return value being extracted from the result set, and responding with a 404 if no result if available.
 
-*publicQuery
+* publicQuery
 	* This describes if a query can be accessed publically without authentication (the name may be changed in the future to avoid confusion with hidden/internal)
 route:/someUrl/{someParam} OR route:/someUrl/somePath
 	* Defines how the query is accessible though a URL
