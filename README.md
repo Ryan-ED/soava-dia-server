@@ -14,14 +14,14 @@
 * Then `sudo docker pull couchbase/server:community`
 	* required for the container to work
 * Next, run `npm install` to get the project dependencies
-* Sample data will need to be added: https://github.com/matthew-rindel/soava-dia-server/blob/master/insert-sample-data.sql
 * From the main project directory, `sudo gulp docker-up` will start the Couchbase Server instance
 	* Access http://localhost:8091 to access the Couchbase web admin console
 	* On first setup, you need to set a username and password. Administrator is fine as a default username. The password can be "password" or any other easy to remember password.
 	* For the rest of the settings use the defaults
 	* Create a bucket which matches the name of your project (either soava-dia, task-lion or social-mogul)
 	* Set the memory allocation to around 100MB
-     * Create a user called `test` with a password `test1234`
+        * Create a user called `test` with a password `test1234`
+	* Sample data will need to be added: https://github.com/matthew-rindel/soava-dia-server/blob/master/insert-sample-data.sql
 	* Go to the Queries section and create a primary index on the bucket, by executing ```CREATE PRIMARY INDEX ON `bucket-name` ```
 	* ```SELECT * FROM `bucket-name` ``` should work without any errors, except there will be no data 
 	* Use ```INSERT INTO `bucket-name` VALUES("someKey", { "docType": "example", "someJsonValue ": 45})``` to add sample data based on required document structures (explained in other documents)
