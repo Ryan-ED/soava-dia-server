@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "2d71ee80-0580-4350-8de4-6187c545ddd7",
+		"name": "Test Queries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/testQuery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"testQuery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Single Result",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/testQueryWithSingleResult",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"testQueryWithSingleResult"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/test/query/route",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test",
+						"query",
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Default Route Parameters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/test/query/default/hello/5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test",
+						"query",
+						"default",
+						"hello",
+						"5000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Sequencial Route Parameters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/test/query/sequential/routeParam/20000/someParam/1403",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test",
+						"query",
+						"sequential",
+						"routeParam",
+						"20000",
+						"someParam",
+						"1403"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Named Route Parameters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/test/query/named/routeParam/12394/someParam/98765",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test",
+						"query",
+						"named",
+						"routeParam",
+						"12394",
+						"someParam",
+						"98765"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Everything",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/test/query/everything/routeParam/Mahery/someParam/Rakotobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"test",
+						"query",
+						"everything",
+						"routeParam",
+						"Mahery",
+						"someParam",
+						"Rakotobe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Query With Query Parameters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/testQueryWithQueryParams?firstParam=param1&secondParam=5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"testQueryWithQueryParams"
+					],
+					"query": [
+						{
+							"key": "firstParam",
+							"value": "param1"
+						},
+						{
+							"key": "secondParam",
+							"value": "5000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
