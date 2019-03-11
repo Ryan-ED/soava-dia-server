@@ -14,7 +14,7 @@
 * Then `sudo docker pull couchbase/server:community`
 	* required for the container to work
 * Next, run `npm install` to get the project dependencies
-* Sample data will need to be added. This is dependent on each project (but the method is very similar).
+* Sample data will need to be added: https://github.com/matthew-rindel/soava-dia-server/blob/master/insert-sample-data.sql
 * From the main project directory, `sudo gulp docker-up` will start the Couchbase Server instance
 	* Access http://localhost:8091 to access the Couchbase web admin console
 	* On first setup, you need to set a username and password. Administrator is fine as a default username. The password can be "password" or any other easy to remember password.
