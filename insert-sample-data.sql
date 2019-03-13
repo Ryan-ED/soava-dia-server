@@ -23,4 +23,4 @@ INSERT INTO `soava-dia` ( KEY, VALUE )
                 "tanaTanyMalalaka", "tanaBesarety", "tanaRasalama",
                 "tanaBelAir", "tanaTotal", "tanaFivondranana", "tanaAnkadivatoMascott",
                 "tanaAmbohijatovo", "tanaMahamasina", "tanaAnosy"]
-    })`
+    })
